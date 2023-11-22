@@ -1,2 +1,3 @@
 export * from './Footer';
-export * from './JavaScriptLogo';
+export * from './Layout';
+export * from './NotFound';
