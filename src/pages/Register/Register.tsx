@@ -27,7 +27,7 @@ const Register = () => {
   const onSubmit: SubmitHandler<FormSchemaRegister> = async (data) => {};
 
   return (
-    <div>
+    <div className="flex items-center justify-center h-screen">
       <img
         src="./charmander.png"
         alt="charmander"
@@ -48,7 +48,7 @@ const Register = () => {
               id="username"
               type="text"
               placeholder="PokeMathe"
-              className="py-3 pl-8 px-4 text-white bg-primaryZzootec1 outline-none rounded-lg w-full"
+              className="py-3 pl-8 px-4 text-white bg-transparent border-2 outline-none rounded-lg w-full"
               {...register("username")}
               autoComplete="off"
             />
@@ -66,7 +66,7 @@ const Register = () => {
               id="email"
               type="text"
               placeholder="PokeMathe@gmail.com"
-              className="py-3 pl-8 px-4 text-white bg-primaryZzootec1 outline-none rounded-lg w-full"
+              className="py-3 pl-8 px-4 text-white bg-transparent border-2 outline-none rounded-lg w-full"
               {...register("email")}
               autoComplete="off"
             />
@@ -85,7 +85,7 @@ const Register = () => {
               id="password"
               type={showPassword ? "text" : "password"}
               placeholder="********"
-              className="py-3 px-8 text-white bg-primaryZzootec1 outline-none rounded-lg w-full"
+              className="py-3 px-8 text-white bg-transparent border-2 outline-none rounded-lg w-full"
               {...register("password")}
             />
             {showPassword ? (
@@ -113,7 +113,7 @@ const Register = () => {
               id="password"
               type={repeatPassword ? "text" : "password"}
               placeholder="********"
-              className="py-3 px-8 text-white bg-primaryZzootec1 outline-none rounded-lg w-full"
+              className="py-3 px-8 text-white bg-transparent border-2 outline-none rounded-lg w-full"
               {...register("repeatPassword")}
             />
             {repeatPassword ? (
@@ -135,7 +135,7 @@ const Register = () => {
           )}
         </div>
         <div className="flex flex-col items-center justify-center mt-4">
-          <button className="text-black px-4 py-2 bg-red-500 rounded-lg w-fit">
+          <button className="text-white px-4 py-2 bg-red-500 rounded-lg w-fit hover:bg-red-600 hover:transition-all">
             Registrarse
           </button>
           <div className="flex justify-between gap-4 mt-4">

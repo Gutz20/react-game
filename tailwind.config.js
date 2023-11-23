@@ -4,7 +4,8 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        homeCharmander: "url('./charmander-home.png')",
+        homeCharmander: "url('/charmander-home.png')",
+        bgCharacters: "url('/bg-characters.png')",
       },
     },
   },

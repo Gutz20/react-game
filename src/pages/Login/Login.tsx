@@ -26,8 +26,12 @@ const Login = () => {
   const onSubmit: SubmitHandler<FormSchemaLogin> = async (data) => {};
 
   return (
-    <div>
-      <img src="./pikachu-bg.png" alt="bg-pikachu" className="absolute left-16 top-56" />
+    <div className="flex items-center justify-center h-screen">
+      <img
+        src="./pikachu-bg.png"
+        alt="bg-pikachu"
+        className="absolute left-16 top-56"
+      />
       <form className="flex flex-col bg-neutral-950 w-[400px] p-12 rounded-xl border">
         <img src="./top-login-form.png" alt="description" />
         <h2 className="uppercase text-xl">Login</h2>
@@ -43,7 +47,7 @@ const Login = () => {
               id="username"
               type="text"
               placeholder="PokeMathe"
-              className="py-3 pl-8 px-4 text-white bg-primaryZzootec1 outline-none rounded-lg w-full"
+              className="py-3 pl-8 px-4 text-white bg-transparent border-2 outline-none rounded-lg w-full"
               {...register("username")}
               autoComplete="off"
             />
@@ -62,7 +66,7 @@ const Login = () => {
               id="password"
               type={showPassword ? "text" : "password"}
               placeholder="********"
-              className="py-3 px-8 text-white bg-primaryZzootec1 outline-none rounded-lg w-full"
+              className="py-3 px-8 text-white bg-transparent border-2 outline-none rounded-lg w-full"
               {...register("password")}
             />
             {showPassword ? (
@@ -84,12 +88,17 @@ const Login = () => {
           )}
         </div>
         <div className="flex flex-col items-center justify-center mt-4">
-          <Link to="/menu" className="text-black px-4 py-2 bg-red-500 rounded-lg w-fit">
+          <Link
+            to="/menu"
+            className="text-white px-4 py-2 bg-red-500 rounded-lg w-fit hover:bg-red-600 hover:transition-all"
+          >
             Iniciar Sesion
           </Link>
           <div className="flex justify-between gap-4 mt-4">
             <span className="text-xs">¿Olvidaste tu contraseña?</span>
-            <Link to={"/registro"} className="uppercase text-red-500 text-xs">Registrate</Link>
+            <Link to={"/registro"} className="uppercase text-red-500 text-xs">
+              Registrate
+            </Link>
           </div>
         </div>
       </form>
