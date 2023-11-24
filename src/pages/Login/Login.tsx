@@ -1,18 +1,19 @@
+import { loginRequest } from "@/api/auth";
+import { useAuthStore } from "@/store/store";
 import { FormSchemaLogin, formLoginSchema } from "@/types/formTypes";
 import { DevTool } from "@hookform/devtools";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import {
-  RiEyeFill,
-  RiEyeOffFill,
-  RiLockFill,
-  RiMailFill,
-} from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
+import { RiEyeFill, RiEyeOffFill, RiLockFill } from "react-icons/ri";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
+  const setToken = useAuthStore((state) => state.setToken);
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -23,16 +24,31 @@ const Login = () => {
     mode: "onChange",
   });
 
-  const onSubmit: SubmitHandler<FormSchemaLogin> = async (data) => {};
+  const onSubmit: SubmitHandler<FormSchemaLogin> = async (data) => {
+    const resLogin = await loginRequest(data);
+    setToken(resLogin.data.token);
+
+    navigate(`/menu`);
+  };
+
+  const onError: SubmitErrorHandler<FormSchemaLogin> = async (data) => {
+    toast.error(`test ${data.username?.message || data.password?.message}`, {
+      theme: "light",
+      position: "top-center",
+    });
+  };
 
   return (
     <div className="flex items-center justify-center h-screen">
       <img
         src="./pikachu-bg.png"
         alt="bg-pikachu"
-        className="absolute left-16 top-56"
+        className="absolute left-16 top-56 md:hidden"
       />
-      <form className="flex flex-col bg-neutral-950 w-[400px] p-12 rounded-xl border">
+      <form
+        className="flex flex-col bg-neutral-950 w-[400px] p-12 rounded-xl border"
+        onSubmit={handleSubmit(onSubmit, onError)}
+      >
         <img src="./top-login-form.png" alt="description" />
         <h2 className="uppercase text-xl">Login</h2>
         <span className="text-start">Usuario</span>
@@ -88,12 +104,12 @@ const Login = () => {
           )}
         </div>
         <div className="flex flex-col items-center justify-center mt-4">
-          <Link
-            to="/menu"
+          <button
+            type="submit"
             className="text-white px-4 py-2 bg-red-500 rounded-lg w-fit hover:bg-red-600 hover:transition-all"
           >
             Iniciar Sesion
-          </Link>
+          </button>
           <div className="flex justify-between gap-4 mt-4">
             <span className="text-xs">¿Olvidaste tu contraseña?</span>
             <Link to={"/registro"} className="uppercase text-red-500 text-xs">
@@ -102,6 +118,8 @@ const Login = () => {
           </div>
         </div>
       </form>
+      <ToastContainer />
+
       <DevTool control={control} />
     </div>
   );

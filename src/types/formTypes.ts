@@ -1,9 +1,7 @@
 import { z } from "zod";
 
 export const formLoginSchema = z.object({
-  username: z
-    .string()
-    .min(3, { message: "El usuario debe tener más de 3 letras" }),
+  username: z.string().min(3, { message: "El usuario debe ser mayor de 3" }),
   password: z.string().min(6, { message: "Minimo 6 digitos" }),
 });
 

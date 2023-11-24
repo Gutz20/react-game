@@ -1,6 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./App.css";
-import { Layout, NotFound } from "./components";
+import { Layout, NotFound, ProtectedRoute } from "./components";
 import {
   Characters,
   Configuration,
@@ -9,8 +9,13 @@ import {
   Menu,
   Register,
 } from "./pages";
+import { useAuthStore } from "./store/store";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
+  const isAuth = useAuthStore((state) => state.isAuth);
+  const queryClient = new QueryClient();
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -24,7 +29,11 @@ function App() {
     },
     {
       path: "/menu",
-      element: <Layout />,
+      element: (
+        <ProtectedRoute isAllowed={isAuth}>
+          <Layout />
+        </ProtectedRoute>
+      ),
       errorElement: <NotFound />,
       children: [
         {
@@ -53,7 +62,9 @@ function App() {
 
   return (
     <>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </>
   );
 }

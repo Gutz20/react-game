@@ -2,6 +2,7 @@ import { create } from "zustand";
 import confetti from "canvas-confetti";
 import { persist, devtools } from "zustand/middleware";
 import { Question } from "@/types/types";
+import { getQuestionsRequest } from "@/api/questions";
 
 interface State {
   questions: Question[];
@@ -23,12 +24,11 @@ export const useQuestionsStore = create<State>()(
           currentQuestion: 0,
 
           fetchQuestions: async (limit: number) => {
-            const res = await fetch(`http://localhost:5173/data.json`);
-            const json = await res.json();
-
-            const questions = json
+            const test = await getQuestionsRequest();
+            const questions = test
               .sort(() => Math.random() - 0.5)
               .slice(0, limit);
+
             set({ questions }, false, "FETCH_QUESTIONS");
           },
 
