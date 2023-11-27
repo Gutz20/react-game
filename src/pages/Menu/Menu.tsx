@@ -11,22 +11,28 @@ const Menu = () => {
   const medium = useMediaQuery(theme.breakpoints.up("md"));
 
   return (
-    <main>
+    <main className="bg-bgPikachuHierba bg-cover">
       <div className="h-screen grid grid-cols-3">
         <div className="flex items-center justify-center">
-          <img src="./charmander-home.png" alt="Charmander" />
+          <img
+            src="./charmander-home.png"
+            alt="Charmander"
+            className="animate-[bounce_2s_ease-in-out_infinite]"
+          />
         </div>
-        <div className="flex flex-col gap-8 justify-center">
+        <div className="flex flex-col gap-[450px] justify-center">
           <div>
-            <h1 className="text-4xl font-bold text-center">
+            <h1 className="text-4xl font-bold text-center text-black">
               ¡Prepárate para Capturar PokeProblemas!
             </h1>
           </div>
 
-          <span className="border text-center border-red-500 uppercase text-white text-2xl rounded-lg hover:bg-red-500 hover:transition-all hover:text-black px-4 py-2">
-            ¡Empezemos!
-          </span>
-          {questions.length === 0 && <Start />}
+          <div className="">
+            <button className="w-full text-center bg-red-500 uppercase text-white rounded-lg hover:transition-all px-4 py-2 hover:bg-red-700 border-2 border-black font-bold">
+              ¡Empecemos!
+            </button>
+            {questions.length === 0 && <Start />}
+          </div>
         </div>
         <div className="flex flex-col items-center justify-center">
           <img

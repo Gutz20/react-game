@@ -52,10 +52,6 @@ function App() {
           path: "/menu/exercises",
           element: <Exercises />,
         },
-        // {
-        //   path: "/dashboard/customers",
-        //   element: <Customers />,
-        // },
       ],
     },
   ]);

@@ -17,9 +17,3 @@ export const deleteQuestionRequest = (id: number) =>
 
 export const deleteMultipleQuestionRequest = async (ids: number[]) =>
   await axios.delete(`/api/v1/questions/deleteMany`, { data: ids });
-
-// export const getAllQuestions = async () => {
-//   const res = await fetch("http://localhost:5173/data.json");
-//   const json = await res.json();
-//   return json;
-// };

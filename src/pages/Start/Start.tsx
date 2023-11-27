@@ -15,9 +15,12 @@ export const Start = () => {
 
   return (
     <div className="mt-4">
-      <Button onClick={handleClick} variant="contained" className="w-full">
+      <button
+        onClick={handleClick}
+        className="w-full px-4 py-2 bg-bgFondoMate rounded-lg uppercase border-2 border-black font-bold"
+      >
         ¡Empezar el juego!
-      </Button>
+      </button>
     </div>
   );
 };

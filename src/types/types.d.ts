@@ -7,5 +7,3 @@ export interface Question {
   userSelectedAnswer?: number;
   isCorrectUserAnswer?: boolean;
 }
-
-

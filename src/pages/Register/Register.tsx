@@ -31,7 +31,7 @@ const Register = () => {
       <img
         src="./charmander.png"
         alt="charmander"
-        className="absolute left-16 top-56"
+        className="absolute left-16 top-56 animate-[bounce_3s_ease-in-out_infinite]"
       />
       <form className="flex flex-col bg-neutral-950 w-[400px] p-12 rounded-xl border">
         <img src="./top-login-form.png" alt="description" />

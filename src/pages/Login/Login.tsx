@@ -3,6 +3,9 @@ import { useAuthStore } from "@/store/store";
 import { FormSchemaLogin, formLoginSchema } from "@/types/formTypes";
 import { DevTool } from "@hookform/devtools";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { duration } from "@mui/material";
+import { motion, useMotionValue, useTime, useTransform } from "framer-motion";
+import { circOut } from "framer-motion/dom";
 import { useState } from "react";
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import { RiEyeFill, RiEyeOffFill, RiLockFill } from "react-icons/ri";
@@ -14,6 +17,7 @@ const Login = () => {
   const setToken = useAuthStore((state) => state.setToken);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -39,11 +43,10 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex items-center justify-center h-screen bg-no-repeat bg-cover">
       <img
-        src="./pikachu-bg.png"
-        alt="bg-pikachu"
-        className="absolute left-16 top-56 md:hidden"
+        src={"/pikachu-bg.png"}
+        className="absolute left-16 top-56 bg-bgPikachu animate-[bounce_3s_ease-in-out_infinite]"
       />
       <form
         className="flex flex-col bg-neutral-950 w-[400px] p-12 rounded-xl border"
