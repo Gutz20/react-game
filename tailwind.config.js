@@ -17,9 +17,9 @@ export default {
       },
     },
     fontFamily: {
-      LilitaOne: [""],
-      PacificoFamily: [""],
-      MarkerDisplay: [""],
+      LilitaOne: ["Lilita One"],
+      PacificoFamily: ["Pacifico"],
+      MarkerDisplay: ["Permanent Marker"],
     },
   },
   plugins: [],

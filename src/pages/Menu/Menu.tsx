@@ -1,17 +1,16 @@
-import { useQuestionsData } from "@/hooks/useQuestionsData";
 import { useQuestionsStore } from "@/store/questions";
-import { useMediaQuery, useTheme } from "@mui/material";
+import { useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
-import { Game, Results, Start } from "..";
+import { Start } from "..";
 
 const Menu = () => {
   const questions = useQuestionsStore((state) => state.questions);
-  const { unanswered } = useQuestionsData();
+  // const { unanswered } = useQuestionsData();
   const theme = useTheme();
-  const medium = useMediaQuery(theme.breakpoints.up("md"));
+  // const medium = useMediaQuery(theme.breakpoints.up("md"));
 
   return (
-    <main className="bg-bgPikachuHierba bg-cover">
+    <main className="bg-bgPikachuHierba bg-cover bg-opacity-90">
       <div className="h-screen grid grid-cols-3">
         <div className="flex items-center justify-center">
           <img
@@ -21,10 +20,11 @@ const Menu = () => {
           />
         </div>
         <div className="flex flex-col gap-[450px] justify-center">
-          <div>
-            <h1 className="text-4xl font-bold text-center text-black">
+          <div className="px-4 py-4">
+            {/* <h1 className="text-5xl font-bold text-center font-LilitaOne text-transparent bg-clip-text bg-gradient-to-b from-red-800 to-orange-500">
               ¡Prepárate para Capturar PokeProblemas!
-            </h1>
+            </h1> */}
+            <img src="/titulo-menu.png" alt="titulo" className="w-full h-30" />
           </div>
 
           <div className="">
