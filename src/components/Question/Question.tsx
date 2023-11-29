@@ -1,24 +1,16 @@
 import { useQuestionsStore } from "@/store/questions";
 import { type Question as QuestionType } from "@/types/types";
-import {
-  Card,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Typography,
-} from "@mui/material";
+import { List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 const getBackgroundColor = (info: QuestionType, index: number) => {
   const { userSelectedAnswer, correctAnswer } = info;
-  if (userSelectedAnswer == null) return "transparent";
-  if (index !== correctAnswer && index !== userSelectedAnswer)
-    return "transparent";
+  if (userSelectedAnswer == null) return "white";
+  if (index !== correctAnswer && index !== userSelectedAnswer) return "white";
   if (index === correctAnswer) return "green";
   if (index === userSelectedAnswer) return "red";
-  return "transparent";
+  return "white";
 };
 
 const Question = ({ info }: { info: QuestionType }) => {
@@ -29,38 +21,39 @@ const Question = ({ info }: { info: QuestionType }) => {
   };
 
   return (
-    <Card
-      variant="outlined"
-      sx={{
-        bgcolor: "#222",
-        p: 2,
-        textAlign: "left",
-        marginTop: 4,
-        maxWidth: "100%",
-      }}
-    >
-      <Typography variant="h5">{info.question}</Typography>
-
-      <SyntaxHighlighter language="javascript" style={atomOneDark}>
-        {info.code}
-      </SyntaxHighlighter>
-
-      <List sx={{ bgcolor: "#333" }} disablePadding>
-        {info.answers.map((answer, index) => (
-          <ListItem key={index} disablePadding divider>
-            <ListItemButton
-              disabled={info.userSelectedAnswer != null}
-              onClick={createHandleClick(index)}
-              sx={{
-                backgroundColor: getBackgroundColor(info, index),
-              }}
-            >
-              <ListItemText primary={answer} sx={{ textAlign: "center" }} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Card>
+    <div className="p-2 mt-4">
+      <div className="bg-black w-fit rounded-xl px-4 py-2 border-2 mb-4">
+        <span className="font-PacificoFamily">{info.question}</span>
+      </div>
+      <div className="flex flex-col items-center justify-center gap-4 bg-indigo-700 p-12 rounded-xl">
+        <SyntaxHighlighter
+          language="javascript"
+          style={atomOneDark}
+          className="bg-white w-full text-black text-center font-LilitaOne rounded-xl py-2"
+        >
+          {info.code}
+        </SyntaxHighlighter>
+        <div className="w-full">
+          <List disablePadding>
+            {info.answers.map((answer, index) => (
+              <ListItem key={index}>
+                <ListItemButton
+                  disabled={info.userSelectedAnswer != null}
+                  onClick={createHandleClick(index)}
+                  sx={{
+                    backgroundColor: getBackgroundColor(info, index),
+                    color: "black",
+                    borderRadius: 5,
+                  }}
+                >
+                  <ListItemText primary={answer} sx={{ textAlign: "center" }} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </div>
+      </div>
+    </div>
   );
 };
 
