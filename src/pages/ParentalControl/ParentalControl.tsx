@@ -1,6 +1,7 @@
 import { FormSchemaParental, formParentalSchema } from "@/types/formTypes";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const ParentalControl = () => {
   const {
@@ -108,12 +109,18 @@ const ParentalControl = () => {
           <span>Puntajes</span>
         </div>
         <div className="flex flex-col gap-4">
-          <button className="px-4 py-2 rounded-lg bg-blue-500 text-black hover:bg-blue-600 border-2 border-black hover:transition-all">
+          <button className="px-4 py-2 rounded-lg bg-blue-500 font-bold uppercase hover:bg-blue-600 border-2 border-black hover:transition-all">
             Aceptar
           </button>
-          <button className="px-4 py-2 rounded-lg bg-red-500 text-black hover:bg-red-600 border-2 border-black hover:transition-all">
+          <button className="px-4 py-2 rounded-lg bg-red-500 font-bold uppercase hover:bg-red-600 border-2 border-black hover:transition-all">
             Rechazar
           </button>
+          <Link
+            to="/menu"
+            className="px-4 py-2 rounded-lg bg-yellow-500 font-bold uppercase hover:bg-yellow-600 border-2 border-black hover:transition-all text-center"
+          >
+            Regresar
+          </Link>
         </div>
       </div>
     </div>

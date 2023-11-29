@@ -1,6 +1,12 @@
 import { Footer, Question } from "@/components";
 import { useQuestionsStore } from "@/store/questions";
-import { Button } from "@mui/material";
+import {
+  RiArrowLeftDoubleFill,
+  RiArrowRightDoubleFill,
+  RiLightbulbFill,
+  RiMenuLine,
+  RiOrganizationChart,
+} from "react-icons/ri";
 
 export const Game = () => {
   const questions = useQuestionsStore((state) => state.questions);
@@ -20,28 +26,44 @@ export const Game = () => {
           onClick={goPreviousQuestion}
           className={`px-4 py-2 rounde-lg bg-blue-500 rounded-lg shadow-md hover:bg-blue-600 hover:transition-all hover:scale-105 active:scale-95 disabled:pointer-events-none ${
             currentQuestion === 0 ? "bg-gray-200" : "bg-blue-500"
-          }`}
+          } disabled:text-black uppercase font-PacificoFamily disabled:transition-all`}
           disabled={currentQuestion === 0}
         >
-          Anterior
+          <span className="flex items-center">
+            <RiArrowLeftDoubleFill className="mr-2" /> Anterior
+          </span>
         </button>
-        <Button onClick={goPreviousQuestion} variant="contained">
-          {/* <ArrowBackIosNew /> */}
-          PISTA
-        </Button>
-        <Button onClick={goPreviousQuestion} variant="contained">
-          {/* <ArrowBackIosNew /> */}
-          NIVEL
-        </Button>
+        <button
+          onClick={goPreviousQuestion}
+          className={`px-4 py-2 rounde-lg bg-blue-500 rounded-lg shadow-md hover:bg-blue-600 hover:transition-all hover:scale-105 active:scale-95 uppercase font-PacificoFamily`}
+        >
+          <span className="flex items-center">
+            <RiLightbulbFill className="mr-2 text-yellow-400" /> Pista
+          </span>
+        </button>
+        <button
+          onClick={goPreviousQuestion}
+          className={`px-4 py-2 rounde-lg bg-blue-500 rounded-lg shadow-md hover:bg-blue-600 hover:transition-all hover:scale-105 active:scale-95 uppercase font-PacificoFamily`}
+        >
+          <span className="flex items-center">
+            <RiOrganizationChart className="mr-2" /> Nivel
+          </span>
+        </button>
         {/* {currentQuestion + 1} / {questions.length} */}
-        <Button
+        <button
           onClick={goNextQuestion}
+          className={`px-4 py-2 rounde-lg bg-blue-500 rounded-lg shadow-md hover:bg-blue-600 hover:transition-all hover:scale-105 active:scale-95 disabled:pointer-events-none ${
+            currentQuestion >= questions.length - 1
+              ? "bg-gray-200"
+              : "bg-blue-500"
+          } disabled:text-black uppercase font-PacificoFamily`}
           disabled={currentQuestion >= questions.length - 1}
-          variant="contained"
         >
           {/* <ArrowForwardIos /> */}
-          SIGUIENTE
-        </Button>
+          <span className="flex items-center">
+            Siguiente <RiArrowRightDoubleFill className="ml-2" />
+          </span>
+        </button>
       </div>
       <Footer />
     </>
