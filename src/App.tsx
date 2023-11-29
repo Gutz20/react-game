@@ -7,6 +7,8 @@ import {
   Exercises,
   Login,
   Menu,
+  ParentalControl,
+  Profile,
   Register,
 } from "./pages";
 import { useAuthStore } from "./store/store";
@@ -51,6 +53,14 @@ function App() {
         {
           path: "/menu/exercises",
           element: <Exercises />,
+        },
+        {
+          path: "/menu/parental",
+          element: <ParentalControl />,
+        },
+        {
+          path: "/menu/profile",
+          element: <Profile />,
         },
       ],
     },

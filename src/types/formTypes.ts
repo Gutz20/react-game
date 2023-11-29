@@ -17,3 +17,12 @@ export const formRegisterSchema = z.object({
 });
 
 export type FormSchemaRegister = z.infer<typeof formRegisterSchema>;
+
+export const formParentalSchema = z.object({
+  campo1: z.string(),
+  campo2: z.string(),
+  campo3: z.string(),
+  campo4: z.string(),
+});
+
+export type FormSchemaParental = z.infer<typeof formParentalSchema>;

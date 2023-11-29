@@ -14,7 +14,7 @@ const Configuration = () => {
     setValue(volume);
   }, []);
 
-  const handleChange = (event: Event, newValue: number | number[]) => {
+  const handleChange = (_: Event, newValue: number | number[]) => {
     setValue(newValue as number);
   };
 

@@ -5,9 +5,7 @@ import { Start } from "..";
 
 const Menu = () => {
   const questions = useQuestionsStore((state) => state.questions);
-  // const { unanswered } = useQuestionsData();
   const theme = useTheme();
-  // const medium = useMediaQuery(theme.breakpoints.up("md"));
 
   return (
     <main className="bg-bgPikachuHierba bg-cover bg-opacity-90">
@@ -21,9 +19,6 @@ const Menu = () => {
         </div>
         <div className="flex flex-col gap-[450px] justify-center">
           <div className="px-4 py-4">
-            {/* <h1 className="text-5xl font-bold text-center font-LilitaOne text-transparent bg-clip-text bg-gradient-to-b from-red-800 to-orange-500">
-              ¡Prepárate para Capturar PokeProblemas!
-            </h1> */}
             <img src="/titulo-menu.png" alt="titulo" className="w-full h-30" />
           </div>
 
@@ -50,20 +45,24 @@ const Menu = () => {
                 />
               </button>
             </Link>
-            <button className="border border-yellow-500 uppercase text-white text-2xl rounded-lg hover:bg-yellow-500 hover:transition-all hover:text-black px-4 py-2">
-              <img
-                className="w-20 h-20"
-                src="./estadisticas-icon.png"
-                alt="estadisticas"
-              />
-            </button>
-            <button className="border border-yellow-500 uppercase text-white text-2xl rounded-lg hover:bg-yellow-500 hover:transition-all hover:text-black px-4 py-2">
-              <img
-                className="w-20 h-20"
-                src="./signo-de-interrogacion.png"
-                alt="interrogación"
-              />
-            </button>
+            <Link to="/menu/parental">
+              <button className="border border-yellow-500 uppercase text-white text-2xl rounded-lg hover:bg-yellow-500 hover:transition-all hover:text-black px-4 py-2">
+                <img
+                  className="w-20 h-20"
+                  src="./estadisticas-icon.png"
+                  alt="estadisticas"
+                />
+              </button>
+            </Link>
+            <Link to="/menu/profile">
+              <button className="border border-yellow-500 uppercase text-white text-2xl rounded-lg hover:bg-yellow-500 hover:transition-all hover:text-black px-4 py-2">
+                <img
+                  className="w-20 h-20"
+                  src="./signo-de-interrogacion.png"
+                  alt="interrogación"
+                />
+              </button>
+            </Link>
             <Link to="/menu/configuracion">
               <button className="border border-yellow-500 uppercase text-white text-2xl rounded-lg hover:bg-yellow-500 hover:transition-all hover:text-black px-4 py-2">
                 <img

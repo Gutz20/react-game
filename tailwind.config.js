@@ -14,6 +14,12 @@ export default {
         bgPikachuHierba: "url('/pikachu-hierba.png')",
         bgPokemonesMitad: "url('/pokemons-mitad.png')",
         bgFondoMate: "url('/fondo-mate.png')",
+        bgPokemonBatalla: "url('/batalla-pokemon-fondo.jpg')",
+        bgPokemonVolando: "url('/bg-pokemon-volando.jpeg')",
+        bgPokemonFondoNegro: "url('/bg-pokemon-negro-fondo.jpeg')",
+        bgPokemonesUnidos: "url('/pokemon-unidos.jpeg')",
+        bgPokemonNavidad: "url('/bg-pokemon-navidad.jpeg')",
+        bgPokemonCiudad: "url('/bg-pokemon-ciudad.jpeg')",
       },
     },
     fontFamily: {
