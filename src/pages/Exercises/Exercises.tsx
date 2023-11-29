@@ -21,7 +21,7 @@ const Exercises = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="bg-bgPokemonPregunta1 bg-cover bg-no-repeat h-screen p-4">
       <IconButton onClick={handleReset} size="large">
         <RiHome2Line />
       </IconButton>

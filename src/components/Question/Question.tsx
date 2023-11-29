@@ -1,15 +1,15 @@
 import { useQuestionsStore } from "@/store/questions";
 import { type Question as QuestionType } from "@/types/types";
 import {
-    Card,
-    List,
-    ListItem,
-    ListItemButton,
-    ListItemText,
-    Typography
+  Card,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Typography,
 } from "@mui/material";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { gradientDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 const getBackgroundColor = (info: QuestionType, index: number) => {
   const { userSelectedAnswer, correctAnswer } = info;
@@ -41,7 +41,7 @@ const Question = ({ info }: { info: QuestionType }) => {
     >
       <Typography variant="h5">{info.question}</Typography>
 
-      <SyntaxHighlighter language="javascript" style={gradientDark}>
+      <SyntaxHighlighter language="javascript" style={atomOneDark}>
         {info.code}
       </SyntaxHighlighter>
 
