@@ -10,7 +10,7 @@ export const Start = () => {
 
   const handleClick = () => {
     fetchQuestions(LIMIT_QUESTIONS);
-    navigate("/menu/exercises");
+    navigate("/menu/map");
   };
 
   return (

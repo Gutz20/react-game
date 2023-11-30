@@ -1,5 +1,5 @@
 import { useAuthStore } from "@/store/store";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -29,6 +29,11 @@ const Profile = () => {
         <button className="px-4 py-2 bg-yellow-500 border-2 rounded-xl w-full uppercase hover:bg-yellow-600 hover:transition-all">
           Historial
         </button>
+        <Link to="/menu">
+          <button className="px-4 py-2 bg-yellow-500 border-2 rounded-xl w-full uppercase hover:bg-yellow-600 hover:transition-all">
+            Regresar
+          </button>
+        </Link>
       </div>
     </div>
   );

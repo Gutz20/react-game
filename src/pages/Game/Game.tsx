@@ -101,7 +101,7 @@ export const Game = () => {
                   >
                     <ListItemIcon></ListItemIcon>
                     <ListItemText
-                      primary={`Nivel ${index + 1} ${question.id}`}
+                      primary={` Nivel ${index + 1}`}
                     />
                   </ListItemButton>
                 </List>

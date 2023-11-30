@@ -6,6 +6,7 @@ import {
   Configuration,
   Exercises,
   Login,
+  MapGame,
   Menu,
   ParentalControl,
   Profile,
@@ -61,6 +62,10 @@ function App() {
         {
           path: "/menu/profile",
           element: <Profile />,
+        },
+        {
+          path: "/menu/map",
+          element: <MapGame />,
         },
       ],
     },
