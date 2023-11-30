@@ -7,6 +7,7 @@ import { getQuestionsRequest } from "@/api/questions";
 interface State {
   questions: Question[];
   currentQuestion: number;
+  setCurrentQuestion: (index: number) => void;
   fetchQuestions: (limit: number) => Promise<void>;
   selectAnswer: (questionId: number, answerIndex: number) => void;
   goNextQuestion: () => void;
@@ -50,6 +51,10 @@ export const useQuestionsStore = create<State>()(
               userSelectedAnswer: answerIndex,
             };
             set({ questions: newQuestions }, false, "SELECT_ANSWER");
+          },
+
+          setCurrentQuestion: (index: number) => {
+            set({ currentQuestion: index }, false, "SET_CURRENT_QUESTION");
           },
 
           goNextQuestion: () => {

@@ -14,16 +14,18 @@ export const Results = () => {
   };
 
   return (
-    <div className="mt-4">
-      <h1>¡Tus resultados</h1>
+    <div className="flex flex-col h-screen items-center justify-center">
+      <div className="bg-slate-950 rounded-xl p-4 flex flex-col items-center justify-center gap-4 border-2">
+        <h1 className="font-LilitaOne">¡Tus resultados</h1>
 
-      <strong>
-        <p>✅ {correct} correctas</p>
-        <p>❌ {incorrect} incorrectas</p>
-      </strong>
+        <strong className="font-LilitaOne font-normal">
+          <p>✅ {correct} correctas</p>
+          <p>❌ {incorrect} incorrectas</p>
+        </strong>
 
-      <div className="mt-4">
-        <Button onClick={handleReset}>¡Empezar de nuevo!</Button>
+        <div className="mt-4">
+          <Button onClick={handleReset}>¡Empezar de nuevo!</Button>
+        </div>
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import { Game, Results } from "..";
 
 const Exercises = () => {
   const questions = useQuestionsStore((state) => state.questions);
+  const currentQuestion = useQuestionsStore((state) => state.currentQuestion);
   const { unanswered } = useQuestionsData();
 
   const reset = useQuestionsStore((state) => state.reset);
@@ -20,8 +21,29 @@ const Exercises = () => {
     navigate("/menu");
   };
 
+  const backgroundImages = [
+    "bg-bgPokemonPregunta1",
+    "bg-bgPokemonPregunta2",
+    "bg-bgPokemonPregunta3",
+    "bg-bgPokemonPregunta4",
+    "bg-bgPokemonPregunta5",
+    "bg-bgPokemonPregunta6",
+    "bg-bgPokemonPregunta7",
+    "bg-bgPokemonPregunta8",
+    "bg-bgPokemonPregunta9",
+    "bg-bgPokemonPregunta10",
+    "bg-bgPokemonPregunta11",
+  ];
+
+  const getBackgroundImage = () => {
+    const randomIndex = Math.floor(Math.random() * backgroundImages.length);
+    return backgroundImages[randomIndex];
+  };
+
+  const backgroundImage = getBackgroundImage();
+
   return (
-    <div className="bg-bgPokemonPregunta1 bg-cover bg-no-repeat h-screen p-4">
+    <div className={`${backgroundImage} bg-cover bg-no-repeat h-screen p-4`}>
       <IconButton onClick={handleReset} size="large">
         <RiHome2Line />
       </IconButton>

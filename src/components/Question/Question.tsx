@@ -52,7 +52,7 @@ const Question = ({ info }: { info: QuestionType }) => {
             ))}
           </List>
         </div>
-      </div>
+        </div>
     </div>
   );
 };
