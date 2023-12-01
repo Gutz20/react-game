@@ -26,7 +26,8 @@ const Menu = () => {
             <button className="w-full text-center bg-red-500 uppercase text-white rounded-lg hover:transition-all px-4 py-2 hover:bg-red-700 border-2 border-black font-bold">
               ¡Empecemos!
             </button>
-            {questions.length === 0 && <Start />}
+            {/* {questions.length === 0 && <Start />} */}
+            <Start />
           </div>
         </div>
         <div className="flex flex-col items-center justify-center">

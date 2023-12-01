@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 export const Results = () => {
   const navigate = useNavigate();
   const { correct, incorrect } = useQuestionsData();
+  const points = useQuestionsStore((state) => state.points);
   const reset = useQuestionsStore((state) => state.reset);
 
   const handleReset = () => {
@@ -14,16 +15,19 @@ export const Results = () => {
   };
 
   return (
-    <div className="mt-4">
-      <h1>¡Tus resultados</h1>
+    <div className="flex flex-col h-screen items-center justify-center">
+      <div className="bg-slate-950 rounded-xl p-4 flex flex-col items-center justify-center gap-4 border-2">
+        <h1 className="font-LilitaOne">¡Tus resultados</h1>
 
-      <strong>
-        <p>✅ {correct} correctas</p>
-        <p>❌ {incorrect} incorrectas</p>
-      </strong>
+        <strong className="font-LilitaOne font-normal">
+          <p>✅ {correct} correctas</p>
+          <p>❌ {incorrect} incorrectas</p>
+          <p>Conseguiste {points} Pokepoints</p>
+        </strong>
 
-      <div className="mt-4">
-        <Button onClick={handleReset}>¡Empezar de nuevo!</Button>
+        <div className="mt-4">
+          <Button onClick={handleReset}>¡Empezar de nuevo!</Button>
+        </div>
       </div>
     </div>
   );

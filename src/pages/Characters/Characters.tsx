@@ -1,5 +1,6 @@
 import { Character, useSettingStore } from "@/store/settings";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Characters = () => {
   const { selectCharacter, clearSelection, selectedCharacter } =
@@ -14,11 +15,12 @@ const Characters = () => {
 
   const onChangeCharacter = (character: Character) => {
     selectCharacter(character);
+    toast.success(`Has seleccionado a ${character.name}`);
   };
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-bgCharacters gap-4">
-      <h1 className="text-3xl font-bold uppercase text-black">
+      <h1 className="text-3xl font-bold uppercase text-black font-LilitaOne">
         Selecciona tu personaje
       </h1>
       <div className="bg-opacity-80 bg-black w-fit p-8 rounded-lg">
@@ -37,7 +39,7 @@ const Characters = () => {
                   alt={character.name}
                   className="h-40 w-40"
                 />
-                <span className="text-black text-xl font-semibold">
+                <span className="text-black text-xl font-LilitaOne">
                   {character.name}
                 </span>
               </button>
@@ -47,7 +49,7 @@ const Characters = () => {
       </div>
       {selectedCharacter && (
         <div className="mt-4 bg-slate-500 rounded-xl p-2 border-2">
-          <h2 className="text-xl font-bold text-black">
+          <h2 className="text-xl text-black font-MarkerDisplay">
             Personaje seleccionado:
           </h2>
           <div className="flex flex-col items-center">
@@ -56,16 +58,16 @@ const Characters = () => {
               alt={selectedCharacter.name}
               className="h-40 w-40 mt-2"
             />
-            <span className="text-black text-xl font-semibold mt-2">
+            <span className="text-black text-xl mt-2 font-LilitaOne font-normal">
               {selectedCharacter.name}
             </span>
           </div>
         </div>
       )}
       <div className="flex gap-4">
-        <button className="px-4 py-2 bg-red-500 rounded-lg text-3xl hover:transition-all hover:bg-red-600 border-2">
-          Seleccionar
-        </button>
+        {/* <button className="px-4 py-2 bg-red-500 rounded-lg text-3xl hover:transition-all hover:bg-red-600 border-2">
+          Fijar
+        </button> */}
         <Link to="/menu">
           <button className="px-4 py-2 bg-blue-500 rounded-lg text-3xl hover:transition-all hover:bg-blue-600 border-2">
             Regresar

@@ -5,6 +5,8 @@ import { IconButton } from "@mui/material";
 import { useEffect, useState } from "react";
 import { RiVolumeMuteLine, RiVolumeUpLine } from "react-icons/ri";
 import { Outlet } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Layout = () => {
   const setUser = useAuthStore((state) => state.setUser);
@@ -72,6 +74,7 @@ const Layout = () => {
           {isMuted ? <RiVolumeMuteLine /> : <RiVolumeUpLine />}
         </IconButton>
       </div>
+      <ToastContainer />
     </div>
   );
 };

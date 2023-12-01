@@ -3,6 +3,7 @@ export * from './Configuration';
 export * from './Exercises';
 export * from './Game';
 export * from './Login';
+export * from './MapGame';
 export * from './Menu';
 export * from './ParentalControl';
 export * from './Profile';
