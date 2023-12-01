@@ -1,16 +1,22 @@
+import { useQuestionsStore } from "@/store/questions";
 import { useSettingStore } from "@/store/settings";
 import { motion, useTime, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 import {
   RiArrowLeftCircleLine,
   RiArrowRightCircleLine,
-  RiArrowRightLine,
   RiArrowUpCircleFill,
-  RiSubtractLine,
 } from "react-icons/ri";
+import { Link, useNavigate } from "react-router-dom";
 
 const MapGame = () => {
+  const navigate = useNavigate();
+  const setCurrentQuestion = useQuestionsStore(
+    (state) => state.setCurrentQuestion
+  );
   const { selectedCharacter } = useSettingStore();
+  const points = useQuestionsStore((state) => state.points);
+
   const [tiempo, setTiempo] = useState(0);
   const time = useTime();
   const rotate = useTransform(time, [0, 4000], [0, 360], { clamp: false });
@@ -34,14 +40,44 @@ const MapGame = () => {
     return `${horas}:${minutos}:${segundos}`;
   };
 
+  const handleClickLevel = (index: number) => {
+    navigate("/menu/exercises");
+    setCurrentQuestion(index);
+  };
+
   return (
     <div className="bg-bgPokemonCiudad bg-no-repeat bg-cover grid grid-cols-6 gap-8 h-screen p-8">
       <div className="absolute inset-0 bg-black opacity-60"></div>
 
-      <div className="flex flex-col justify-between col-span-1 z-10">
+      <div className="flex flex-col justify-between col-span-1 z-10 gap-4">
         <div>
-          <div>OBJETO 1 (NO RECUERDO)</div>
-          <div>NIVEL ESPECIAL</div>
+          <div className="flex flex-col items-center justify-center gap-4">
+            <Link to="/menu">
+              <motion.button
+                className="px-4 py-2 uppercase font-LilitaOne border-2 rounded-xl transition-all w-fit hover:bg-red-500"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+              >
+                Regresar
+              </motion.button>
+            </Link>
+          </div>
+          <div className="flex flex-col items-center justify-center mt-4 font-LilitaOne gap-4">
+            <h3 className="uppercase text-xl">Nivel Especial</h3>
+            <span className="">Adquiere más Pokepuntos</span>
+            <motion.img
+              src="/pokebola-cat-1.png"
+              alt="Pokebola"
+              className="w-20 h-20"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{
+                type: "spring",
+                stiffness: 260,
+                damping: 20,
+              }}
+            />
+          </div>
         </div>
         <div className="flex gap-2">
           <motion.img
@@ -68,20 +104,23 @@ const MapGame = () => {
       <div className="grid grid-rows-5 col-span-4 items-center z-10">
         <div className="flex items-center justify-between">
           <motion.img
+            onClick={() => handleClickLevel(9)}
             src="/pokebola-cat-1.png"
-            className="w-20 h-20"
+            className="w-20 h-20 cursor-pointer"
             style={{ rotate }}
           />
           <RiArrowRightCircleLine className="text-4xl" />
           <motion.img
+            onClick={() => handleClickLevel(8)}
             src="/pokebola-cat-1.png"
-            className="w-20 h-20"
+            className="w-20 h-20 cursor-pointer"
             style={{ rotate }}
           />
           <RiArrowRightCircleLine className="text-4xl" />
           <motion.img
+            onClick={() => handleClickLevel(7)}
             src="/pokebola-cat-1.png"
-            className="w-20 h-20"
+            className="w-20 h-20 cursor-pointer"
             style={{ rotate }}
           />
         </div>
@@ -90,49 +129,55 @@ const MapGame = () => {
         </div>
         <div className="flex items-center justify-between">
           <motion.img
+            onClick={() => handleClickLevel(6)}
             src="/pokebola-cat-1.png"
-            className="w-20 h-20"
+            className="w-20 h-20 cursor-pointer"
             style={{ rotate }}
           />
           <RiArrowLeftCircleLine className="text-4xl" />
           <motion.img
+            onClick={() => handleClickLevel(5)}
             src="/pokebola-cat-1.png"
-            className="w-20 h-20"
+            className="w-20 h-20 cursor-pointer"
             style={{ rotate }}
           />
           <RiArrowLeftCircleLine className="text-4xl" />
           <motion.img
+            onClick={() => handleClickLevel(4)}
             src="/pokebola-cat-1.png"
-            className="w-20 h-20"
+            className="w-20 h-20 cursor-pointer"
             style={{ rotate }}
           />
         </div>
         <div className="flex justify-end">
           <RiArrowUpCircleFill className="text-7xl text-blue-500 rounded-full" />
-          {/* <div className="h-0.5 w-[80px] bg-white rotate-90 relative before:content-['>'] before:absolute before:-top-[11px] before:rotate-180"></div> */}
         </div>
         <div className="flex items-center justify-between">
           <motion.img
+            onClick={() => handleClickLevel(0)}
             src="/pokebola-cat-1.png"
-            className="w-20 h-20"
+            className="w-20 h-20 cursor-pointer"
             style={{ rotate }}
           />
           <RiArrowRightCircleLine className="text-4xl" />
           <motion.img
+            onClick={() => handleClickLevel(1)}
             src="/pokebola-cat-1.png"
-            className="w-20 h-20"
+            className="w-20 h-20 cursor-pointer"
             style={{ rotate }}
           />
           <RiArrowRightCircleLine className="text-4xl" />
           <motion.img
+            onClick={() => handleClickLevel(2)}
             src="/pokebola-cat-1.png"
-            className="w-20 h-20"
+            className="w-20 h-20 cursor-pointer"
             style={{ rotate }}
           />
           <RiArrowRightCircleLine className="text-4xl" />
           <motion.img
+            onClick={() => handleClickLevel(3)}
             src="/pokebola-cat-1.png"
-            className="w-20 h-20"
+            className="w-20 h-20 cursor-pointer"
             style={{ rotate }}
           />
         </div>
@@ -163,9 +208,9 @@ const MapGame = () => {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
         >
-          <span className="font-LilitaOne">Puntaje: </span>
-          <span className="font-LilitaOne">500 </span>
-          <span className="font-LilitaOne text-red-500">Pokepoints</span>
+          <span className="font-MarkerDisplay">Puntaje: </span>
+          <span className="font-MarkerDisplay">{points}</span>
+          <span className="font-MarkerDisplay text-red-500">Pokepoints</span>
         </motion.div>
       </div>
     </div>

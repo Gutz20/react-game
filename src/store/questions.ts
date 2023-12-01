@@ -7,6 +7,8 @@ import { getQuestionsRequest } from "@/api/questions";
 interface State {
   questions: Question[];
   currentQuestion: number;
+  points: number;
+  incrementPoints: (quantity: number) => void;
   setCurrentQuestion: (index: number) => void;
   fetchQuestions: (limit: number) => Promise<void>;
   selectAnswer: (questionId: number, answerIndex: number) => void;
@@ -22,6 +24,7 @@ export const useQuestionsStore = create<State>()(
         return {
           loading: false,
           questions: [],
+          points: 0,
           currentQuestion: 0,
 
           fetchQuestions: async (limit: number) => {
@@ -60,10 +63,35 @@ export const useQuestionsStore = create<State>()(
           goNextQuestion: () => {
             const { currentQuestion, questions } = get();
             const nextQuestion = currentQuestion + 1;
+            const nivelesPorPuntos = 5;
 
             if (nextQuestion < questions.length) {
               set({ currentQuestion: nextQuestion }, false, "GO_NEXT_QUESTION");
+
+              const levelCompleted = nextQuestion % nivelesPorPuntos === 0;
+              if (levelCompleted) {
+                const pointsObtained = 50;
+                const isCorrect =
+                  questions[nextQuestion - nivelesPorPuntos]
+                    .isCorrectUserAnswer;
+
+                if (isCorrect) {
+                  set(
+                    (state) => ({ points: state.points + pointsObtained }),
+                    false,
+                    "POINTS_OBTAINED"
+                  );
+                }
+              }
             }
+          },
+
+          incrementPoints: (cantidad: number) => {
+            set(
+              (state) => ({ points: state.points + cantidad }),
+              false,
+              "INCREMENT_POINTS"
+            );
           },
 
           goPreviousQuestion: () => {
@@ -80,7 +108,11 @@ export const useQuestionsStore = create<State>()(
           },
 
           reset: () => {
-            set({ currentQuestion: 0, questions: [] }, false, "RESET");
+            set(
+              { currentQuestion: 0, questions: [], points: 0 },
+              false,
+              "RESET"
+            );
           },
         };
       },

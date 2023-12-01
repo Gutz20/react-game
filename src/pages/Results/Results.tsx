@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 export const Results = () => {
   const navigate = useNavigate();
   const { correct, incorrect } = useQuestionsData();
+  const points = useQuestionsStore((state) => state.points);
   const reset = useQuestionsStore((state) => state.reset);
 
   const handleReset = () => {
@@ -21,6 +22,7 @@ export const Results = () => {
         <strong className="font-LilitaOne font-normal">
           <p>✅ {correct} correctas</p>
           <p>❌ {incorrect} incorrectas</p>
+          <p>Conseguiste {points} Pokepoints</p>
         </strong>
 
         <div className="mt-4">

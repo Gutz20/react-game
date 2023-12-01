@@ -7,13 +7,15 @@ import {
   ListItemText,
   Modal,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   RiArrowLeftDoubleFill,
   RiArrowRightDoubleFill,
   RiLightbulbFill,
+  RiMap2Line,
   RiOrganizationChart,
 } from "react-icons/ri";
+import { Link, useParams } from "react-router-dom";
 
 export const Game = () => {
   const [openPista, setOpenPista] = useState(false);
@@ -31,6 +33,8 @@ export const Game = () => {
   );
 
   const questionInfo = questions[currentQuestion];
+
+  useEffect(() => {}, []);
 
   const onPistaOpen = () => {
     setOpenPista(!openPista);
@@ -70,6 +74,14 @@ export const Game = () => {
             <RiArrowLeftDoubleFill className="mr-2" /> Anterior
           </span>
         </button>
+        <Link
+          to="/menu/map"
+          className={`px-4 py-2 rounde-lg bg-blue-500 rounded-lg shadow-md hover:bg-blue-600 hover:transition-all hover:scale-105 active:scale-95  uppercase font-PacificoFamily`}
+        >
+          <span className="flex items-center">
+            <RiMap2Line className="mr-2" /> Ver Mapa
+          </span>
+        </Link>
         <button
           onClick={onPistaOpen}
           className={`px-4 py-2 rounde-lg bg-blue-500 rounded-lg shadow-md hover:bg-blue-600 hover:transition-all hover:scale-105 active:scale-95 uppercase font-PacificoFamily`}
@@ -100,9 +112,7 @@ export const Game = () => {
                     onClick={(event) => onLevelSelected(event, index)}
                   >
                     <ListItemIcon></ListItemIcon>
-                    <ListItemText
-                      primary={` Nivel ${index + 1}`}
-                    />
+                    <ListItemText primary={` Nivel ${index + 1}`} />
                   </ListItemButton>
                 </List>
               ))}
