@@ -46,7 +46,10 @@ export const useQuestionsStore = create<State>()(
             const isCorrectUserAnswer =
               questionInfo.correctAnswer === answerIndex;
 
-            if (isCorrectUserAnswer) confetti();
+            if (isCorrectUserAnswer) {
+              get().incrementPoints(10);
+              confetti();
+            }
 
             newQuestions[questionIndex] = {
               ...questionInfo,
@@ -63,26 +66,9 @@ export const useQuestionsStore = create<State>()(
           goNextQuestion: () => {
             const { currentQuestion, questions } = get();
             const nextQuestion = currentQuestion + 1;
-            const nivelesPorPuntos = 5;
 
             if (nextQuestion < questions.length) {
               set({ currentQuestion: nextQuestion }, false, "GO_NEXT_QUESTION");
-
-              const levelCompleted = nextQuestion % nivelesPorPuntos === 0;
-              if (levelCompleted) {
-                const pointsObtained = 50;
-                const isCorrect =
-                  questions[nextQuestion - nivelesPorPuntos]
-                    .isCorrectUserAnswer;
-
-                if (isCorrect) {
-                  set(
-                    (state) => ({ points: state.points + pointsObtained }),
-                    false,
-                    "POINTS_OBTAINED"
-                  );
-                }
-              }
             }
           },
 
