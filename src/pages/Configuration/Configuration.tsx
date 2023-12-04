@@ -29,7 +29,7 @@ const Configuration = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-bgCharacters gap-4">
+    <div className="flex flex-col items-center justify-center h-screen bg-bgCharacters bg-cover bg-no-repeat gap-4">
       <h1 className="text-3xl font-bold uppercase text-black">Configuración</h1>
       <div className="grid grid-cols-2 bg-opacity-80 bg-black w-fit p-8 rounded-lg">
         <div className="flex flex-col gap-4">
@@ -55,9 +55,13 @@ const Configuration = () => {
           </div>
           <div className="flex items-center justify-between gap-4">
             <span className="text-3xl">Tutorial</span>
-            <button className="px-4 py-2 bg-yellow-500 rounded-lg w-full uppercase hover:bg-yellow-600">
+            <a
+              href="/public/MANUAL_DEL_USUARIO_.pdf"
+              target="_blank"
+              className="px-4 py-2 bg-yellow-500 rounded-lg uppercase hover:bg-yellow-600 w-fit"
+            >
               Ir al tutorial
-            </button>
+            </a>
           </div>
         </div>
         <div className="flex flex-col items-center justify-center">

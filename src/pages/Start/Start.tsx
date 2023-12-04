@@ -6,7 +6,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  Modal
+  Modal,
 } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
@@ -35,12 +35,14 @@ export const Start = () => {
 
   return (
     <div className="mt-4">
-      <button
-        onClick={handleOpen}
-        className="w-full px-4 py-2 bg-bgFondoMate rounded-lg uppercase border-2 border-black font-bold"
-      >
-        ¡Empezar el juego!
-      </button>
+      <div className="flex items-center justify-center">
+        <button
+          onClick={handleOpen}
+          className="px-2 py-4 bg-bgFondoMate rounded-lg uppercase border-2 font-bold w-80 text-4xl font-MarkerDisplay"
+        >
+          Jugar
+        </button>
+      </div>
       <Modal open={open} onClose={handleClose}>
         <div className="absolute top-1/3 left-1/2 w-[400px] rounded-lg -translate-x-1/2 flex items-center justify-center bg-slate-800 flex-col p-4">
           <span className="text-xl font-bold">

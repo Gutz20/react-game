@@ -19,11 +19,11 @@ const Characters = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-bgCharacters gap-4">
-      <h1 className="text-3xl font-bold uppercase text-black font-LilitaOne">
+    <div className="flex flex-col items-center justify-center h-screen bg-bgPokemonMapaFondo4 gap-4">
+      <h1 className="text-3xl font-bold uppercase text-white font-LilitaOne">
         Selecciona tu personaje
       </h1>
-      <div className="bg-opacity-80 bg-black w-fit p-8 rounded-lg">
+      <div className="bg-opacity-80 bg-slate-900 border-2 w-fit p-8 rounded-lg">
         <div className="flex gap-4">
           {characters.map((character, index) => (
             <div
@@ -48,8 +48,8 @@ const Characters = () => {
         </div>
       </div>
       {selectedCharacter && (
-        <div className="mt-4 bg-slate-500 rounded-xl p-2 border-2">
-          <h2 className="text-xl text-black font-MarkerDisplay">
+        <div className="mt-4 bg-slate-800 rounded-xl p-2 border-2">
+          <h2 className="text-xl text-white font-MarkerDisplay">
             Personaje seleccionado:
           </h2>
           <div className="flex flex-col items-center">
@@ -58,7 +58,7 @@ const Characters = () => {
               alt={selectedCharacter.name}
               className="h-40 w-40 mt-2"
             />
-            <span className="text-black text-xl mt-2 font-LilitaOne font-normal">
+            <span className="text-white text-xl mt-2 font-LilitaOne font-normal">
               {selectedCharacter.name}
             </span>
           </div>
@@ -69,7 +69,7 @@ const Characters = () => {
           Fijar
         </button> */}
         <Link to="/menu">
-          <button className="px-4 py-2 bg-blue-500 rounded-lg text-3xl hover:transition-all hover:bg-blue-600 border-2">
+          <button className="px-4 py-2 bg-blue-500 rounded-lg text-3xl hover:transition-all hover:bg-blue-600 border-2 uppercase font-LilitaOne">
             Regresar
           </button>
         </Link>

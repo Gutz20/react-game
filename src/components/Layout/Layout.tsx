@@ -69,7 +69,7 @@ const Layout = () => {
         <source src="pokemon-audio.m4a" type="audio/mp3" />
         Tu navegador no soporta el elemento de audio.
       </audio>
-      <div className="absolute bottom-0 right-0 m-4">
+      <div className="absolute bottom-0 right-0 m-4 z-10">
         <IconButton onClick={onHandleVolume}>
           {isMuted ? <RiVolumeMuteLine /> : <RiVolumeUpLine />}
         </IconButton>

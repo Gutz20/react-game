@@ -33,7 +33,7 @@ const Login = () => {
   };
 
   const onError: SubmitErrorHandler<FormSchemaLogin> = async (data) => {
-    toast.error(`test ${data.username?.message || data.password?.message}`, {
+    toast.error(`${data.username?.message || data.password?.message}`, {
       theme: "light",
       position: "top-center",
     });

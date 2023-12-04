@@ -1,10 +1,11 @@
+import { QuestionSchemaInfer } from "@/models/question";
 import { useQuestionsStore } from "@/store/questions";
 import { type Question as QuestionType } from "@/types/types";
 import { List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
-const getBackgroundColor = (info: QuestionType, index: number) => {
+const getBackgroundColor = (info: QuestionSchemaInfer, index: number) => {
   const { userSelectedAnswer, correctAnswer } = info;
   if (userSelectedAnswer == null) return "white";
   if (index !== correctAnswer && index !== userSelectedAnswer) return "white";
@@ -13,11 +14,11 @@ const getBackgroundColor = (info: QuestionType, index: number) => {
   return "white";
 };
 
-const Question = ({ info }: { info: QuestionType }) => {
+const Question = ({ info }: { info: QuestionSchemaInfer }) => {
   const selectAnswer = useQuestionsStore((state) => state.selectAnswer);
 
   const createHandleClick = (answerIndex: number) => () => {
-    selectAnswer(info.id, answerIndex);
+    selectAnswer(info.id as number, answerIndex);
   };
 
   return (

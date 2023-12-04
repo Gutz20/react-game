@@ -1,11 +1,13 @@
 import { Footer, Question } from "@/components";
 import { useQuestionsStore } from "@/store/questions";
+import { useSettingStore } from "@/store/settings";
 import {
+  LinearProgress,
   List,
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  Modal,
+  Modal
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import {
@@ -15,7 +17,7 @@ import {
   RiMap2Line,
   RiOrganizationChart,
 } from "react-icons/ri";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Game = () => {
   const [openPista, setOpenPista] = useState(false);
@@ -27,10 +29,23 @@ export const Game = () => {
   const setCurrentQuestion = useQuestionsStore(
     (state) => state.setCurrentQuestion
   );
+
+  const time = useSettingStore((state) => state.time);
+  const setTime = useSettingStore((state) => state.setTime);
+  const [timeLeft, setTimeLeft] = useState<number>(time);
+
   const goNextQuestion = useQuestionsStore((state) => state.goNextQuestion);
   const goPreviousQuestion = useQuestionsStore(
     (state) => state.goPreviousQuestion
   );
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prevTime) => Math.max(prevTime - 1, 0));
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   const questionInfo = questions[currentQuestion];
 
@@ -54,7 +69,19 @@ export const Game = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center w-full ">
+      <div className="grid grid-cols-4 w-[700px] mx-auto gap-2">
+        <LinearProgress
+          variant="determinate"
+          sx={{borderRadius: 5, height: 10}}
+          value={((time - timeLeft) / time) * 100}
+          className="col-span-3 mt-4"
+          color="error"
+        />
+        <span className="bg-yellow-500 rounded-lg border-2 col-span-1 text-center font-LilitaOne text-3xl">
+          {timeLeft} segundos
+        </span>
+      </div>
+      <div className="flex items-center justify-center w-full mt-4">
         <span className="text-white font-LilitaOne font-normal bg-slate-500 p-2 rounded-xl border-2">
           {currentQuestion + 1} / {questions.length}
         </span>

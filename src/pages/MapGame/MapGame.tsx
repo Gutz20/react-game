@@ -1,3 +1,4 @@
+import { useAliasStore } from "@/store/alias";
 import { useQuestionsStore } from "@/store/questions";
 import { useSettingStore } from "@/store/settings";
 import { motion, useTime, useTransform } from "framer-motion";
@@ -15,6 +16,7 @@ const MapGame = () => {
     (state) => state.setCurrentQuestion
   );
   const { selectedCharacter } = useSettingStore();
+  const alias = useAliasStore((state) => state.alias);
   const points = useQuestionsStore((state) => state.points);
 
   const [tiempo, setTiempo] = useState(0);
@@ -46,7 +48,7 @@ const MapGame = () => {
   };
 
   return (
-    <div className="bg-bgPokemonCiudad bg-no-repeat bg-cover grid grid-cols-6 gap-8 h-screen p-8">
+    <div className="bg-bgPokemonMapaFondo4 bg-no-repeat bg-cover grid grid-cols-6 gap-8 h-screen p-8">
       <div className="absolute inset-0 bg-black opacity-60"></div>
 
       <div className="flex flex-col justify-between col-span-1 z-10 gap-4">
@@ -63,7 +65,7 @@ const MapGame = () => {
             </Link>
           </div>
           <div className="flex flex-col items-center justify-center mt-4 font-LilitaOne gap-4">
-            <h3 className="uppercase text-xl">Nivel Especial</h3>
+            <h3 className="uppercase text-xl">Pregunta Especial</h3>
             <span className="">Adquiere más Pokepuntos</span>
             <motion.img
               src="/pokebola-cat-1.png"
@@ -80,18 +82,21 @@ const MapGame = () => {
           </div>
         </div>
         <div className="flex gap-2">
-          <motion.img
-            src={selectedCharacter?.image}
-            alt={selectedCharacter?.name}
-            className="w-20 h-20"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{
-              type: "spring",
-              stiffness: 260,
-              damping: 20,
-            }}
-          />
+          <div className="flex flex-col items-center justify-center">
+            <span className="font-LilitaOne text-xl">{alias}</span>
+            <motion.img
+              src={selectedCharacter?.image}
+              alt={selectedCharacter?.name}
+              className="w-20 h-20"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{
+                type: "spring",
+                stiffness: 260,
+                damping: 20,
+              }}
+            />
+          </div>
           <motion.img
             src="/pokebola-cat-1.png"
             alt="Pokebola"
@@ -103,83 +108,113 @@ const MapGame = () => {
       </div>
       <div className="grid grid-rows-5 col-span-4 items-center z-10">
         <div className="flex items-center justify-between">
-          <motion.img
-            onClick={() => handleClickLevel(9)}
-            src="/pokebola-cat-1.png"
-            className="w-20 h-20 cursor-pointer"
-            style={{ rotate }}
-          />
-          <RiArrowRightCircleLine className="text-4xl" />
-          <motion.img
-            onClick={() => handleClickLevel(8)}
-            src="/pokebola-cat-1.png"
-            className="w-20 h-20 cursor-pointer"
-            style={{ rotate }}
-          />
-          <RiArrowRightCircleLine className="text-4xl" />
-          <motion.img
-            onClick={() => handleClickLevel(7)}
-            src="/pokebola-cat-1.png"
-            className="w-20 h-20 cursor-pointer"
-            style={{ rotate }}
-          />
+          <div className="flex flex-col items-center justify-center">
+            <span className="font-LilitaOne">Nivel 8</span>
+            <motion.img
+              onClick={() => handleClickLevel(7)}
+              src="/pokebola-cat-1.png"
+              className="w-20 h-20 cursor-pointer"
+              style={{ rotate }}
+            />
+          </div>
+          <RiArrowRightCircleLine className="text-4xl text-yellow-500" />
+          <div className="flex flex-col items-center justify-center">
+            <span className="font-LilitaOne">Nivel 9</span>
+            <motion.img
+              onClick={() => handleClickLevel(8)}
+              src="/pokebola-cat-1.png"
+              className="w-20 h-20 cursor-pointer"
+              style={{ rotate }}
+            />
+          </div>
+          <RiArrowRightCircleLine className="text-4xl text-yellow-500" />
+          <div className="flex flex-col items-center justify-center">
+            <span className="font-LilitaOne">Nivel 10</span>
+            <motion.img
+              onClick={() => handleClickLevel(9)}
+              src="/pokebola-cat-1.png"
+              className="w-20 h-20 cursor-pointer"
+              style={{ rotate }}
+            />
+          </div>
         </div>
         <div className="flex justify-start">
-          <RiArrowUpCircleFill className="text-7xl text-blue-500 rounded-full" />
+          <RiArrowUpCircleFill className="text-7xl text-yellow-500 rounded-full" />
         </div>
         <div className="flex items-center justify-between">
-          <motion.img
-            onClick={() => handleClickLevel(6)}
-            src="/pokebola-cat-1.png"
-            className="w-20 h-20 cursor-pointer"
-            style={{ rotate }}
-          />
-          <RiArrowLeftCircleLine className="text-4xl" />
-          <motion.img
-            onClick={() => handleClickLevel(5)}
-            src="/pokebola-cat-1.png"
-            className="w-20 h-20 cursor-pointer"
-            style={{ rotate }}
-          />
-          <RiArrowLeftCircleLine className="text-4xl" />
-          <motion.img
-            onClick={() => handleClickLevel(4)}
-            src="/pokebola-cat-1.png"
-            className="w-20 h-20 cursor-pointer"
-            style={{ rotate }}
-          />
+          <div className="flex flex-col items-center justify-center">
+            <span className="font-LilitaOne">Nivel 7</span>
+            <motion.img
+              onClick={() => handleClickLevel(6)}
+              src="/pokebola-cat-1.png"
+              className="w-20 h-20 cursor-pointer"
+              style={{ rotate }}
+            />
+          </div>
+          <RiArrowLeftCircleLine className="text-4xl text-yellow-500" />
+          <div className="flex flex-col items-center justify-center">
+            <span className="font-LilitaOne">Nivel 6</span>
+            <motion.img
+              onClick={() => handleClickLevel(5)}
+              src="/pokebola-cat-1.png"
+              className="w-20 h-20 cursor-pointer"
+              style={{ rotate }}
+            />
+          </div>
+          <RiArrowLeftCircleLine className="text-4xl text-yellow-500" />
+          <div className="flex flex-col items-center justify-center">
+            <span className="font-LilitaOne">Nivel 5</span>
+            <motion.img
+              onClick={() => handleClickLevel(4)}
+              src="/pokebola-cat-1.png"
+              className="w-20 h-20 cursor-pointer"
+              style={{ rotate }}
+            />
+          </div>
         </div>
         <div className="flex justify-end">
-          <RiArrowUpCircleFill className="text-7xl text-blue-500 rounded-full" />
+          <RiArrowUpCircleFill className="text-7xl text-yellow-500 rounded-full" />
         </div>
         <div className="flex items-center justify-between">
-          <motion.img
-            onClick={() => handleClickLevel(0)}
-            src="/pokebola-cat-1.png"
-            className="w-20 h-20 cursor-pointer"
-            style={{ rotate }}
-          />
-          <RiArrowRightCircleLine className="text-4xl" />
-          <motion.img
-            onClick={() => handleClickLevel(1)}
-            src="/pokebola-cat-1.png"
-            className="w-20 h-20 cursor-pointer"
-            style={{ rotate }}
-          />
-          <RiArrowRightCircleLine className="text-4xl" />
-          <motion.img
-            onClick={() => handleClickLevel(2)}
-            src="/pokebola-cat-1.png"
-            className="w-20 h-20 cursor-pointer"
-            style={{ rotate }}
-          />
-          <RiArrowRightCircleLine className="text-4xl" />
-          <motion.img
-            onClick={() => handleClickLevel(3)}
-            src="/pokebola-cat-1.png"
-            className="w-20 h-20 cursor-pointer"
-            style={{ rotate }}
-          />
+          <div className="flex flex-col items-center justify-center">
+            <span className="font-LilitaOne">Nivel 1</span>
+            <motion.img
+              onClick={() => handleClickLevel(0)}
+              src="/pokebola-cat-1.png"
+              className="w-20 h-20 cursor-pointer"
+              style={{ rotate }}
+            />
+          </div>
+          <RiArrowRightCircleLine className="text-4xl text-yellow-500" />
+          <div className="flex flex-col items-center justify-center">
+            <span className="font-LilitaOne">Nivel 2</span>
+            <motion.img
+              onClick={() => handleClickLevel(1)}
+              src="/pokebola-cat-1.png"
+              className="w-20 h-20 cursor-pointer"
+              style={{ rotate }}
+            />
+          </div>
+          <RiArrowRightCircleLine className="text-4xl text-yellow-500" />
+          <div className="flex flex-col items-center justify-center">
+            <span className="font-LilitaOne">Nivel 3</span>
+            <motion.img
+              onClick={() => handleClickLevel(2)}
+              src="/pokebola-cat-1.png"
+              className="w-20 h-20 cursor-pointer"
+              style={{ rotate }}
+            />
+          </div>
+          <RiArrowRightCircleLine className="text-4xl text-yellow-500" />
+          <div className="flex flex-col items-center justify-center">
+            <span className="font-LilitaOne">Nivel 4</span>
+            <motion.img
+              onClick={() => handleClickLevel(3)}
+              src="/pokebola-cat-1.png"
+              className="w-20 h-20 cursor-pointer"
+              style={{ rotate }}
+            />
+          </div>
         </div>
       </div>
       <div className="flex flex-col justify-between col-span-1 z-10">
@@ -188,10 +223,12 @@ const MapGame = () => {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
         >
-          <span className="underline text-xl">{formatTiempo()}</span>
+          <span className="text-4xl font-MarkerDisplay">
+            Time: {formatTiempo()}
+          </span>
         </motion.div>
         <motion.div
-          className="bg-yellow-500 border-2 rounded-xl p-4 h-60 overflow-auto font-LilitaOne"
+          className="bg-slate-800 border-2 rounded-xl p-4 h-60 overflow-auto font-LilitaOne"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
         >

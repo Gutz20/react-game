@@ -1,15 +1,19 @@
 import { useQuestionsData } from "@/hooks/useQuestionsData";
+import { usePointsStore } from "@/store/points";
 import { useQuestionsStore } from "@/store/questions";
 import { Button } from "@mui/material";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const Results = () => {
   const navigate = useNavigate();
   const { correct, incorrect } = useQuestionsData();
-  const points = useQuestionsStore((state) => state.points);
+  const point = useQuestionsStore((state) => state.point);
   const reset = useQuestionsStore((state) => state.reset);
+  const { addPoint } = usePointsStore();
 
   const handleReset = () => {
+    addPoint(point);
     reset();
     navigate("/menu");
   };
@@ -22,7 +26,7 @@ export const Results = () => {
         <strong className="font-LilitaOne font-normal">
           <p>✅ {correct} correctas</p>
           <p>❌ {incorrect} incorrectas</p>
-          <p>Conseguiste {points} Pokepoints</p>
+          <p>Conseguiste {point} Pokepoints</p>
         </strong>
 
         <div className="mt-4">

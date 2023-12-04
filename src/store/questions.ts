@@ -7,7 +7,7 @@ import { devtools, persist } from "zustand/middleware";
 interface State {
   questions: QuestionSchemaInfer[];
   currentQuestion: number;
-  points: number;
+  point: number;
   incrementPoints: (quantity: number) => void;
   setCurrentQuestion: (index: number) => void;
   fetchQuestions: (limit: number, dificultId: number) => Promise<void>;
@@ -24,7 +24,7 @@ export const useQuestionsStore = create<State>()(
         return {
           loading: false,
           questions: [],
-          points: 0,
+          point: 0,
           currentQuestion: 0,
 
           fetchQuestions: async (limit: number, dificultId?: number) => {
@@ -74,7 +74,7 @@ export const useQuestionsStore = create<State>()(
 
           incrementPoints: (cantidad: number) => {
             set(
-              (state) => ({ points: state.points + cantidad }),
+              (state) => ({ point: state.point + cantidad }),
               false,
               "INCREMENT_POINTS"
             );
@@ -95,7 +95,7 @@ export const useQuestionsStore = create<State>()(
 
           reset: () => {
             set(
-              { currentQuestion: 0, questions: [], points: 0 },
+              { currentQuestion: 0, questions: [], point: 0 },
               false,
               "RESET"
             );
