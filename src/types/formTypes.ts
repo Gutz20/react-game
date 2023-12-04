@@ -19,10 +19,9 @@ export const formRegisterSchema = z.object({
 export type FormSchemaRegister = z.infer<typeof formRegisterSchema>;
 
 export const formParentalSchema = z.object({
-  campo1: z.string(),
-  campo2: z.string(),
-  campo3: z.string(),
-  campo4: z.string(),
+  usuario: z.string(),
+  edad: z.number().max(15).min(3),
+  tiempo: z.number().max(3600).min(180),
 });
 
 export type FormSchemaParental = z.infer<typeof formParentalSchema>;

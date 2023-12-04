@@ -1,16 +1,16 @@
-import { create } from "zustand";
+import { getQuestionsByDificultRequest, getQuestionsRequest } from "@/api/questions";
+import { QuestionSchemaInfer } from "@/models/question";
 import confetti from "canvas-confetti";
-import { persist, devtools } from "zustand/middleware";
-import { Question } from "@/types/types";
-import { getQuestionsRequest } from "@/api/questions";
+import { create } from "zustand";
+import { devtools, persist } from "zustand/middleware";
 
 interface State {
-  questions: Question[];
+  questions: QuestionSchemaInfer[];
   currentQuestion: number;
   points: number;
   incrementPoints: (quantity: number) => void;
   setCurrentQuestion: (index: number) => void;
-  fetchQuestions: (limit: number) => Promise<void>;
+  fetchQuestions: (limit: number, dificultId: number) => Promise<void>;
   selectAnswer: (questionId: number, answerIndex: number) => void;
   goNextQuestion: () => void;
   goPreviousQuestion: () => void;
@@ -27,9 +27,9 @@ export const useQuestionsStore = create<State>()(
           points: 0,
           currentQuestion: 0,
 
-          fetchQuestions: async (limit: number) => {
-            const test = await getQuestionsRequest();
-            const questions = test
+          fetchQuestions: async (limit: number, dificultId?: number) => {
+            const response = await getQuestionsByDificultRequest(dificultId);
+            const questions = response
               .sort(() => Math.random() - 0.5)
               .slice(0, limit);
 

@@ -14,7 +14,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="mt-4">
+    <footer className="flex flex-col items-center justify-center mt-4">
       <div className="bg-slate-800 w-fit p-4 rounded-xl flex gap-4">
         <span className="text-blue-500 font-bold">{`✅ ${correct} correctas`}</span>
         <span className="text-red-500 font-bold">{`❌ ${incorrect} incorrectas`}</span>

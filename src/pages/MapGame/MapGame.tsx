@@ -195,22 +195,27 @@ const MapGame = () => {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
         >
-          <h3 className="uppercase text-center font-normal">Historia</h3>
+          <h3 className="uppercase text-center font-normal">
+            El Viaje Incesante
+          </h3>
           <p className="text-justify font-normal">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam,
-            magnam? Assumenda cum, voluptatum porro quo asperiores quasi
-            aspernatur nemo voluptate? Exercitationem fugiat, impedit quo labore
-            quisquam ipsam amet corporis reiciendis. Historia (?)
+            Seguimos la epopeya de Ash Ketchum, un joven entrenador Pokémon de
+            Pueblo Paleta, en su búsqueda para convertirse en el Maestro Pokémon
+            definitivo. Acompañado por su fiel compañero Pikachu, Ash se
+            enfrenta a desafíos de gimnasios, villanos del Team Rocket y hace
+            nuevos amigos mientras recorre la región de Kanto y más allá. A lo
+            largo de su viaje, captura nuevos Pokémon, evoluciona sus compañeros
+            y aprende valiosas lecciones sobre amistad y perseverancia, dejando
+            una huella indeleble en el vasto mundo de Pokémon.
           </p>
         </motion.div>
         <motion.div
-          className="bg-blue-500 border-xl p-4 rounded-xl mr-12 border-2"
+          className="bg-blue-500 border-xl p-4 rounded-xl mr-12 border-2 flex items-center gap-2 "
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
         >
-          <span className="font-MarkerDisplay">Puntaje: </span>
-          <span className="font-MarkerDisplay">{points}</span>
-          <span className="font-MarkerDisplay text-red-500">Pokepoints</span>
+          <img src="/pokebola.png" alt="Pokebola" className="w-8 h-8" />{" "}
+          <span className="font-MarkerDisplay text-2xl"> x {points}</span>
         </motion.div>
       </div>
     </div>

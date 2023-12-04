@@ -20,6 +20,7 @@ export default {
         bgPokemonesUnidos: "url('/pokemon-unidos.jpeg')",
         bgPokemonNavidad: "url('/bg-pokemon-navidad.jpeg')",
         bgPokemonCiudad: "url('/bg-pokemon-ciudad.jpeg')",
+        bgPokemonControlParental: "url('/fondo-control-parental.jpeg')",
         bgFondoMapaJuego: "url('/fondo-mapa.png')",
         bgFondoMapaJuego2: "url('/fondo-mapa2.png')",
         bgFondoMapaJuego3: "url('/bgSquirtleFondo.png')",

@@ -1,7 +1,13 @@
+import { QuestionSchemaInfer } from "@/models/question";
 import axios from "./axios";
 
-export const getQuestionsRequest = async (): Promise<any[]> =>
+export const getQuestionsRequest = async (): Promise<QuestionSchemaInfer[]> =>
   (await axios.get(`/api/v1/questions`)).data;
+
+export const getQuestionsByDificultRequest = async (
+  dificultId: number | undefined
+): Promise<QuestionSchemaInfer[]> =>
+  (await axios.get(`/api/v1/questions/dificult/${dificultId}`)).data;
 
 export const getQuestionRequest = async (id: number) =>
   (await axios.get(`/api/v1/questions/${id}`)).data;

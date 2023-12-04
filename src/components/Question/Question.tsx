@@ -22,14 +22,16 @@ const Question = ({ info }: { info: QuestionType }) => {
 
   return (
     <div className="p-2 mt-4">
-      <div className="bg-black w-fit rounded-xl px-4 py-2 border-2 mb-4">
-        <span className="font-MarkerDisplay">{info.question}</span>
+      <div className="flex items-center justify-center">
+        <div className="bg-black w-fit rounded-xl px-4 py-2 border-2 mb-4">
+          <span className="font-MarkerDisplay">{info.question}</span>
+        </div>
       </div>
-      <div className="flex flex-col items-center justify-center gap-4 bg-indigo-700 p-12 rounded-xl">
+      <div className="flex flex-col items-center justify-center gap-4 bg-indigo-700 p-12 rounded-xl w-[800px] mx-auto border-4">
         <SyntaxHighlighter
           language="javascript"
           style={atomOneDark}
-          className="bg-white w-full text-black text-center font-LilitaOne rounded-xl py-2"
+          className="bg-white w-full text-black text-center font-LilitaOne rounded-xl py-2 text-4xl border-2"
         >
           {info.code}
         </SyntaxHighlighter>
@@ -52,7 +54,7 @@ const Question = ({ info }: { info: QuestionType }) => {
             ))}
           </List>
         </div>
-        </div>
+      </div>
     </div>
   );
 };

@@ -21,7 +21,10 @@ export const useSettingStore = create(
   persist<State & Actions>(
     (set) => ({
       volume: 50,
-      selectedCharacter: null,
+      selectedCharacter: {
+        name: "/Squirtle.png",
+        image: "Squirtle"
+      },
       setVolume: (volume: number) =>
         set((_) => ({
           volume,

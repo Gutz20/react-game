@@ -11,3 +11,18 @@ export const backgroundImages = [
   "bg-bgPokemonPregunta10",
   "bg-bgPokemonPregunta11",
 ];
+
+export const listaLevelsModal = [
+  {
+    text: "Inicial",
+    colorIcon: "text-green-500",
+  },
+  {
+    text: "6 a 8 años",
+    colorIcon: "text-blue-500",
+  },
+  {
+    text: "9 a 10 años",
+    colorIcon: "text-red-500",
+  },
+];
